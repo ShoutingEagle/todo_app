@@ -12,16 +12,17 @@ module.exports = rateLimitingMiddleware = async (req,res,next) => {
                         timeStamp: Date.now()
                     })
                     rateLimitingObj.save()
-                }
-                const timeStampData = Date.now() - rateLimiting.timeStamp
-
-                if(timeStampData >= 60000){
-                    await rateLimitingModel.updateOne({timeStamp: Date.now()})
-                    console.log('first');
-                    
-                    next()
                 }else{
-                    res.send({message: 'too many requests, please try after sometimes',status: 'failed'})
+
+                    const timeStampData = Date.now() - rateLimiting.timeStamp
+    
+                    if(timeStampData >= 60000){
+                        await rateLimitingModel.updateOne({timeStamp: Date.now()})
+                        console.log('first');
+                        next()
+                    }else{
+                        res.send({message: 'too many requests, please try after sometimes',status: 'failed'})
+                    }
                 }
                 
             } catch (error) {
