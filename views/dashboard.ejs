@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar {
+        background-color: #343a40;
+        color: white;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .container {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .welcome {
+        display: inline-block;
+        font-size: 24px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .logout {
+        font-size: small;
+        padding: 10px 20px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .logout:hover {
+        background-color: #c82333;
+    }
+
+    .todo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .todo-list {
+        width: 100%;
+        max-width: 600px;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .todo-list li {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .todo-list li.completed {
+        text-decoration: line-through;
+        color: #999;
+    }
+
+    .todo-list li:hover {
+        background-color: #f1f1f1;
+    }
+
+    .todo-list li button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    .todo-list li button:hover {
+        background-color: #c82333;
+    }
+
+    .input-box input {
+        padding: 10px;
+        width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .input-box button {
+        padding: 10px 20px;
+        margin-left: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .input-box button:hover {
+        background-color: #0056b3;
+    }
+
+    .next-btn{
+        text-align: center;
+    }
+
+    #paginated-data{
+        text-align: center;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Dashboard</h1>
+    </div>
+    <div class="container">
+        <div class="welcome">
+            <p id="welcome-text"></p>
+            <div>
+                <button class="logout" id="logout">Logout</button>
+                <button class="logout" id="logoutAll">Logout from all devices</button>
+            </div>
+        </div>
+        <div id="todo" class="todo">
+            <div class="input-box">
+                <input type="text" id="todo-input" name="inputTodo" placeholder="Enter a new task" />
+                <button id="add-todo">Add Todo</button>
+            </div>
+            <ul id="todo-list" class="todo-list"></ul>
+        </div>
+        <div class="next-btn">
+            <button id="paginated-data">next >></button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/dashboard.js"></script>
+</body>
+</html>
